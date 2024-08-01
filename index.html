@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leap Year</title>
+  </head>
+  <body>
+    <script>
+      // Function to check leap year
+      function checkLeapYear(year) {
+        // Three conditions to find out the leap year
+        if ((0 == year % 4 && 0 != year % 100) || 0 == year % 400) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      // Function to count and list leap years between two years
+      function listLeapYears(startYear, endYear) {
+        let leapYears = [];
+        for (let year = startYear; year <= endYear; year++) {
+          if (checkLeapYear(year)) {
+            leapYears.push(year);
+          }
+        }
+        return leapYears;
+      }
+
+      // Function to calculate age
+      function calculateAge(birthYear, currentYear) {
+        return currentYear - birthYear;
+      }
+
+      // Take input from the user for year of birth
+      const birthYear = parseInt(prompt("Enter your birth year:"), 10);
+
+      // Calculate the number of leap years from 2003 to the current year
+      const startYear = 2003;
+      const endYear = 2024;
+      const currentYear = new Date().getFullYear();
+      const leapYears = listLeapYears(startYear, endYear);
+      const leapYearCount = leapYears.length;
+
+      // Calculate the age
+      const age = calculateAge(birthYear, currentYear);
+
+      // Display the results
+      document.write(
+        "Number of leap years from " +
+          startYear +
+          " to " +
+          endYear +
+          " is: " +
+          leapYearCount +
+          "<br>"
+      );
+      document.write("Leap years: " + leapYears.join(", ") + "<br>");
+      document.write("Your age is: " + age + "<br><br>");
+
+      // Loop through each year from 2003 to 2024 and display if it is a leap year or not
+      for (let year = startYear; year <= endYear; year++) {
+        if (checkLeapYear(year)) {
+          document.write(year + " is a leap year<br>");
+        } else {
+          document.write(year + " is not a leap year<br>");
+        }
+      }
+    </script>
+  </body>
+</html>
